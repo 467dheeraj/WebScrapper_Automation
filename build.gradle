@@ -28,6 +28,13 @@ dependencies {
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     implementation 'org.seleniumhq.selenium:selenium-java:4.14.0'
 
+     // https://mvnrepository.com/artifact/org.testng/testng
+    implementation 'org.testng:testng:7.7.1'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+
+
 }
 
 //task startScript(type:Exec) {
@@ -39,3 +46,13 @@ dependencies {
 //test.dependsOn startScript
 
 mainClassName = 'demo.App'
+
+test {
+    useTestNG(){
+        suites 'src/test/java/resources/testng.xml'
+    }
+    testLogging{
+        showStandardStreams = true
+        events "passed", "skipped", "failed"
+    }
+}
